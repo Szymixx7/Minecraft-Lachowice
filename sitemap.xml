@@ -4,4 +4,8 @@
     <loc>https://szymixx7.github.io/Minecraft-Lachowice/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://sites.google.com/view/minecraftlachowice</loc>
+    <priority>0.9</priority>
+  </url>
 </urlset>
