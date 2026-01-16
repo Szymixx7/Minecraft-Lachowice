@@ -1,74 +1,169 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Lachowice Minecraft</title>
-    <meta name="google-site-verification" content="DJM3KedLdJa1Gx5NHwb4p_SrFZpm2XmSHga9bvhUg9U" />
-    <meta name="description" content="Minecraft Lachowice to projekt, który ma na celu realistyczne odwzorowanie miejscowości Lachowice i okolic w grze Minecraft. Stworzony przez Szymix7.">
-    <meta name="keywords" content="Lachowice, Minecraft, Lachowice Minecraft, Minecraft Lachowice, Szymix7, XSzymonnGaming, XSzymon">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Favicon / logo strony -->
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
-
-    <title>Minecraft Lachowice</title>
-    <style>
-        /* Prosty, nowoczesny styl */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url("tlo.png") no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            text-align: center;
-        }  
-        .container {
-            background: rgba(0,0,0,0.5);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        p {
-            margin-bottom: 30px;
-            font-size: 1.2em;
-        }
-        a.button {
-            text-decoration: none;
-            padding: 15px 30px;
-            background-color: #ffcc00;
-            color: #000;
-            font-weight: bold;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        a.button:hover {
-            background-color: #ffd633;
-            transform: scale(1.05);
-        }
-        footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #ddd;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Lachowice Minecraft</title>
+<meta name="google-site-verification" content="DJM3KedLdJa1Gx5NHwb4p_SrFZpm2XmSHga9bvhUg9U" />
+<meta name="description" content="Minecraft Lachowice to projekt, który ma na celu realistyczne odwzorowanie miejscowości Lachowice i okolic w grze Minecraft. Stworzony przez Szymix7.">
+<meta name="keywords" content="Lachowice, Minecraft, Lachowice Minecraft, Minecraft Lachowice, Szymix7, XSzymonnGaming, XSzymon">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://szymixx7.github.io/Minecraft-Lachowice/" />
+<link rel="icon" href="logo.jpg" type="image/jpeg">
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("tlo.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+}
+.container {
+    background: rgba(0,0,0,0.5);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    max-width: 500px;
+}
+.header-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.header-box h1 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 2.5em;
+    color: #FCCC35;
+}
+.header-box p {
+    margin: 5px 0 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    opacity: 0.8;
+}
+p {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+a.button {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+    display: block;
+    margin: 10px auto;
+}
+a.button:hover {
+    background-color: #ffd633;
+    transform: scale(1.05);
+}
+#cancelBtn {
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 1em;
+    transition: all 0.5s ease;
+}
+#cancelBtn:hover {
+    background-color: #c0392b;
+}
+#countdown {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #2ecc71;
+    -webkit-text-stroke: 0.5px #000;
+    text-stroke: 0.1px #000;
+    transition: opacity 0.2s;
+}
+#projectLink {
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+}
+#projectLink:hover {
+    color: #ffd633;
+}
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ddd;
+}
+</style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
+    <div class="header-box">
         <h1>Minecraft Lachowice</h1>
         <p>Autor: Szymix7</p>
-        <a class="button" href="https://sites.google.com/view/minecraftlachowice/strona-g%C5%82%C3%B3wna" target="_blank">
-            Przejdź do strony projektu
-        </a>
-        <footer>© 2025 Szymix7</footer>
     </div>
+
+    <p>Pełna strona projektu: 
+        <span id="projectLink">https://sites.google.com/view/minecraftlachowice</span>
+    </p>
+
+    <p id="countdown">Autom. przekierowanie nastąpi za 3 sekundy...</p>
+
+    <a class="button" href="#" id="cancelBtn">Anuluj przekierowanie</a>
+
+    <a class="button" href="https://sites.google.com/view/minecraftlachowice/strona-g%C5%82%C3%B3wna" target="_blank" style="font-size:1.2em;">
+        Przejdź do strony projektu
+    </a>
+
+    <footer>© 2025 Szymix7</footer>
+</div>
+
+<script>
+let countdown = 3;
+const countdownEl = document.getElementById('countdown');
+const cancelBtn = document.getElementById('cancelBtn');
+let redirectTimeout = setTimeout(() => {
+    window.location.href = "https://sites.google.com/view/minecraftlachowice/strona-g%C5%82%C3%B3wna";
+}, countdown * 1000);
+
+const interval = setInterval(() => {
+    countdown--;
+    if(countdown > 0) {
+        countdownEl.style.opacity = 0;
+        setTimeout(() => {
+            countdownEl.textContent = `Autom. przekierowanie nastąpi za ${countdown} sekund...`;
+            countdownEl.style.opacity = 1;
+        }, 100);
+    } else {
+        clearInterval(interval);
+    }
+}, 1000);
+
+cancelBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    clearTimeout(redirectTimeout);
+    clearInterval(interval);
+    countdownEl.textContent = "Przekierowanie anulowane.";
+    countdownEl.style.color = "#e74c3c";
+    cancelBtn.style.transform = "translateY(50px)";
+    cancelBtn.style.opacity = "0";
+    setTimeout(() => { cancelBtn.style.display = "none"; }, 500);
+});
+
+const projectLink = document.getElementById('projectLink');
+projectLink.addEventListener('click', function(){
+    navigator.clipboard.writeText(projectLink.textContent)
+    .then(() => {
+        projectLink.textContent = "Skopiowano do schowka!";
+        setTimeout(() => { projectLink.textContent = "https://sites.google.com/view/minecraftlachowice"; }, 2000);
+    });
+});
+</script>
 </body>
 </html>
