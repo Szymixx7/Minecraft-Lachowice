@@ -109,7 +109,7 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    /* Gradient po bokach w formie ramki, środek przezroczysty */
+    /* Gradient boczny jako osobne warstwy z maskowaniem wewnętrznym */
     background:
         linear-gradient(to bottom, #add8e6, #00008b) left,
         linear-gradient(to bottom, #add8e6, #00008b) right,
@@ -118,12 +118,12 @@ body::before {
 
     background-repeat: no-repeat;
     background-size:
-        40px 100%, /* lewy bok */
-        40px 100%, /* prawy bok */
-        100% 40px, /* górny bok */
-        100% 40px; /* dolny bok */
+        50px 100%,  /* lewy bok */
+        50px 100%,  /* prawy bok */
+        100% 50px,  /* górny bok */
+        100% 50px;  /* dolny bok */
 
-    /* Płynne przejście od gradientu do tła wewnątrz */
+    /* Rozmycie tylko po wewnętrznych krawędziach */
     mask:
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
@@ -135,32 +135,25 @@ body::before {
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
 
-    /* Animacja koloru gradientu */
-    animation: animateGradient 6s linear infinite;
+    /* Animacja przesuwania gradientu wzdłuż krawędzi */
+    animation: moveGradient 5s linear infinite;
 }
 
-/* Animacja zmienia tylko kolory gradientu */
-@keyframes animateGradient {
+@keyframes moveGradient {
     0% {
-        background:
-            linear-gradient(to bottom, #add8e6, #00008b) left,
-            linear-gradient(to bottom, #add8e6, #00008b) right,
-            linear-gradient(to right, #add8e6, #00008b) top,
-            linear-gradient(to right, #add8e6, #00008b) bottom;
+        background-position: left top, right top, top left, bottom left;
+    }
+    25% {
+        background-position: left bottom, right bottom, top right, bottom right;
     }
     50% {
-        background:
-            linear-gradient(to bottom, #00008b, #add8e6) left,
-            linear-gradient(to bottom, #00008b, #add8e6) right,
-            linear-gradient(to right, #00008b, #add8e6) top,
-            linear-gradient(to right, #00008b, #add8e6) bottom;
+        background-position: left top, right top, top left, bottom left;
+    }
+    75% {
+        background-position: left bottom, right bottom, top right, bottom right;
     }
     100% {
-        background:
-            linear-gradient(to bottom, #add8e6, #00008b) left,
-            linear-gradient(to bottom, #add8e6, #00008b) right,
-            linear-gradient(to right, #add8e6, #00008b) top,
-            linear-gradient(to right, #add8e6, #00008b) bottom;
+        background-position: left top, right top, top left, bottom left;
     }
 }
 
