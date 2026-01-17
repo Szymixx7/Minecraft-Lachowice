@@ -108,39 +108,40 @@ body::before {
     pointer-events: none;
     z-index: 0;
 
-    padding: 30px;
-    box-sizing: border-box;
-
-    /* NIEBIESKI GRADIENT */
+    /* GRADIENT RAMKI */
     background: linear-gradient(
         90deg,
-        #6ecbff,
-        #1e6fd9,
-        #6ecbff
+        #7dd3ff,
+        #2f80ed,
+        #7dd3ff
     );
     background-size: 400% 400%;
-    animation: borderMove 14s linear infinite;
+    animation: borderFlow 16s linear infinite;
 
-    /* MIĘKKIE KRAWĘDZIE – PROSTOKĄT */
+    /* RAMKA – ŚRODEK WYCINAMY */
     -webkit-mask:
-        linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
-    -webkit-mask-composite: intersect;
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
 
     mask:
-        linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
-    mask-composite: intersect;
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+
+    padding: 35px; /* grubość ramki */
 }
 
-@keyframes borderMove {
-    0%   { background-position:   0%  50%; }
-    25%  { background-position: 100%  50%; }
+/* animacja zgodna z ruchem wskazówek */
+@keyframes borderFlow {
+    0%   { background-position:   0% 50%; }
+    25%  { background-position: 100% 50%; }
     50%  { background-position: 100% 100%; }
     75%  { background-position:   0% 100%; }
-    100% { background-position:   0%  50%; }
+    100% { background-position:   0% 50%; }
 }
 
+/* CONTENT NAD RAMKĄ */
 .container {
     position: relative;
     z-index: 1;
@@ -180,7 +181,7 @@ body::before {
         <p>Autor: Szymix7</p>
     </div>
 
-    <p>Pełna strona projektu: 
+    <p>Link do pełnej strony projektu: 
         <span id="projectLink">https://sites.google.com/view/minecraftlachowice</span>
     </p>
 
