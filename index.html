@@ -108,31 +108,41 @@ body::before {
     pointer-events: none;
     z-index: 0;
 
-    /* GRADIENT RAMKI */
+    /* WYRAŹNY GRADIENT */
     background: linear-gradient(
         90deg,
-        #7dd3ff,
-        #2f80ed,
-        #7dd3ff
+        #bfe9ff,
+        #5dade2,
+        #1f4fd8,
+        #5dade2,
+        #bfe9ff
     );
-    background-size: 400% 400%;
-    animation: borderFlow 16s linear infinite;
+    background-size: 600% 600%;
+    animation: borderFlow 14s linear infinite;
 
-    /* RAMKA – ŚRODEK WYCINAMY */
+    /* MASKA – środek wycięty + miękkie przejście */
     -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
+        linear-gradient(
+            transparent 0%,
+            rgba(0,0,0,0.25) 20%,
+            rgba(0,0,0,1) 40%
+        ) content-box,
         linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
 
     mask:
-        linear-gradient(#000 0 0) content-box,
+        linear-gradient(
+            transparent 0%,
+            rgba(0,0,0,0.25) 20%,
+            rgba(0,0,0,1) 40%
+        ) content-box,
         linear-gradient(#000 0 0);
     mask-composite: exclude;
 
-    padding: 35px; /* grubość ramki */
+    padding: 40px; /* grubość ramki */
 }
 
-/* animacja zgodna z ruchem wskazówek */
+/* Animacja po obwodzie (zgodnie z ruchem wskazówek) */
 @keyframes borderFlow {
     0%   { background-position:   0% 50%; }
     25%  { background-position: 100% 50%; }
@@ -141,7 +151,7 @@ body::before {
     100% { background-position:   0% 50%; }
 }
 
-/* CONTENT NAD RAMKĄ */
+/* content zawsze nad gradientem */
 .container {
     position: relative;
     z-index: 1;
