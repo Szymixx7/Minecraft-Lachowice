@@ -108,31 +108,38 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    background:
-        linear-gradient(90deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) left,
-        linear-gradient(270deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) right,
-        linear-gradient(180deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) top,
-        linear-gradient(0deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) bottom;
+    background: linear-gradient(
+        90deg,
+        rgba(0,153,255,0) 0%,
+        rgba(0,153,255,0.8) 50%,
+        rgba(0,153,255,0) 100%
+    );
 
-    background-repeat: no-repeat;
-    background-size:
-        60px 100%,
-        60px 100%,
-        100% 60px,
-        100% 60px;
+    background-size: 300% 300%;
+    animation: borderMove 8s linear infinite;
 
-    animation: borderGlow 6s linear infinite;
+    /* maska = tylko krawędzie */
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+
+    padding: 35px;
+    box-sizing: border-box;
 }
 
-@keyframes borderGlow {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
+@keyframes borderMove {
+    0%   { background-position:   0%   50%; }
+    25%  { background-position:  50%   0%; }
+    50%  { background-position: 100%  50%; }
+    75%  { background-position:  50% 100%; }
+    100% { background-position:   0%  50%; }
 }
 
 .container {
     position: relative;
     z-index: 1;
-}    
+}
     
 @media (max-width: 600px) {
     .container {
