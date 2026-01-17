@@ -100,6 +100,40 @@ footer {
     font-size: 0.9em;
     color: #ddd;
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) left,
+        linear-gradient(270deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) right,
+        linear-gradient(180deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) top,
+        linear-gradient(0deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) bottom;
+
+    background-repeat: no-repeat;
+    background-size:
+        60px 100%,
+        60px 100%,
+        100% 60px,
+        100% 60px;
+
+    animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}    
+    
 @media (max-width: 600px) {
     .container {
         padding: 20px;
