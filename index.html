@@ -105,35 +105,37 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: 0;
     pointer-events: none;
+    z-index: 0;
 
-    background: linear-gradient(
-        90deg,
-        rgba(0,153,255,0) 0%,
-        rgba(0,153,255,0.8) 50%,
-        rgba(0,153,255,0) 100%
-    );
+    padding: 30px;
+    box-sizing: border-box;
 
-    background-size: 300% 300%;
-    animation: borderMove 8s linear infinite;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0,170,255,0.0) 0%,
+            rgba(0,170,255,0.6) 40%,
+            rgba(0,90,180,0.6) 60%,
+            rgba(0,90,180,0.0) 100%
+        );
 
-    /* maska = tylko krawędzie */
+    background-size: 100% 400%;
+    animation: borderClockwise 10s linear infinite;
+
+    /* tylko obramowanie + miękkie przejście */
     mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
     mask-composite: exclude;
-
-    padding: 35px;
-    box-sizing: border-box;
 }
 
-@keyframes borderMove {
-    0%   { background-position:   0%   50%; }
-    25%  { background-position:  50%   0%; }
-    50%  { background-position: 100%  50%; }
-    75%  { background-position:  50% 100%; }
-    100% { background-position:   0%  50%; }
+@keyframes borderClockwise {
+    0%   { background-position: 50%   0%; }
+    25%  { background-position: 100% 50%; }
+    50%  { background-position: 50% 100%; }
+    75%  { background-position: 0%  50%; }
+    100% { background-position: 50%   0%; }
 }
 
 .container {
