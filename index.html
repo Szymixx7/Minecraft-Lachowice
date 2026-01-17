@@ -108,51 +108,36 @@ body::before {
     pointer-events: none;
     z-index: 0;
 
-    /* WYRAŹNY GRADIENT: jasny ↔ ciemny ↔ jasny */
-    background: linear-gradient(
-        90deg,
-        #cfefff,
-        #4da3ff,
-        #0a2e8a,
-        #4da3ff,
-        #cfefff
+    /* Gradient dookoła krawędzi: jasny → średni → ciemny → średni → jasny */
+    background: conic-gradient(
+        #cfefff 0deg,
+        #4da3ff 90deg,
+        #0a2e8a 180deg,
+        #4da3ff 270deg,
+        #cfefff 360deg
     );
     background-size: 400% 400%;
-    animation: borderRotate 12s linear infinite;
+    animation: borderRotate 15s linear infinite;
 
-    /* RAMKA */
-    padding: 35px;
-
-    /* MASKA: fade TYLKO do środka */
+    /* Ramka/fade od wewnętrznej strony: transparent do 0.8 (mniejsza intensywność w środku) */
     -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(
-            rgba(0,0,0,1) 0%,
-            rgba(0,0,0,0.6) 85%,
-            rgba(0,0,0,0) 100%
-        );
+        radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
     -webkit-mask-composite: destination-out;
-
     mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(
-            rgba(0,0,0,1) 0%,
-            rgba(0,0,0,0.6) 85%,
-            rgba(0,0,0,0) 100%
-        );
-    mask-composite: exclude;
+        radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    mask-composite: intersect;
+
+    /* tylko krawędzie, zero blur */
+    padding: 0;
 }
 
-/* Ruch zgodnie z ruchem wskazówek zegara */
+/* Animacja przesuwania gradientu */
 @keyframes borderRotate {
-    0%   { background-position:   0% 50%; }
-    25%  { background-position: 100% 50%; }
-    50%  { background-position: 100% 100%; }
-    75%  { background-position:   0% 100%; }
-    100% { background-position:   0% 50%; }
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* zawartość zawsze nad gradientem */
+/* kontener zawsze nad gradientem */
 .container {
     position: relative;
     z-index: 1;
