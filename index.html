@@ -108,10 +108,10 @@ body::before {
     pointer-events: none;
     z-index: 0;
 
-    padding: 28px;
+    padding: 30px;
     box-sizing: border-box;
 
-    /* NIEBIESKI gradient */
+    /* NIEBIESKI GRADIENT */
     background: linear-gradient(
         90deg,
         #6ecbff,
@@ -119,21 +119,18 @@ body::before {
         #6ecbff
     );
     background-size: 400% 400%;
-    animation: borderMove 12s linear infinite;
+    animation: borderMove 14s linear infinite;
 
-    /* miękkie przejście do tła – STAŁE */
+    /* MIĘKKIE KRAWĘDZIE – PROSTOKĄT */
     -webkit-mask:
-        radial-gradient(
-            closest-side,
-            transparent 82%,
-            black 100%
-        );
+        linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-composite: intersect;
+
     mask:
-        radial-gradient(
-            closest-side,
-            transparent 82%,
-            black 100%
-        );
+        linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-composite: intersect;
 }
 
 @keyframes borderMove {
