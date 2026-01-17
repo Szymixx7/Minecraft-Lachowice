@@ -108,42 +108,43 @@ body::before {
     pointer-events: none;
     z-index: 0;
 
-    /* WYRAŹNY GRADIENT */
+    /* WYRAŹNY GRADIENT: jasny ↔ ciemny ↔ jasny */
     background: linear-gradient(
         90deg,
-        #bfe9ff,
-        #5dade2,
-        #1f4fd8,
-        #5dade2,
-        #bfe9ff
+        #cfefff,
+        #4da3ff,
+        #0a2e8a,
+        #4da3ff,
+        #cfefff
     );
-    background-size: 600% 600%;
-    animation: borderFlow 14s linear infinite;
+    background-size: 400% 400%;
+    animation: borderRotate 12s linear infinite;
 
-    /* MASKA – środek wycięty + miękkie przejście */
+    /* RAMKA */
+    padding: 35px;
+
+    /* MASKA: fade TYLKO do środka */
     -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
         linear-gradient(
-            transparent 0%,
-            rgba(0,0,0,0.25) 20%,
-            rgba(0,0,0,1) 40%
-        ) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,0.6) 85%,
+            rgba(0,0,0,0) 100%
+        );
+    -webkit-mask-composite: destination-out;
 
     mask:
+        linear-gradient(#000 0 0) content-box,
         linear-gradient(
-            transparent 0%,
-            rgba(0,0,0,0.25) 20%,
-            rgba(0,0,0,1) 40%
-        ) content-box,
-        linear-gradient(#000 0 0);
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,0.6) 85%,
+            rgba(0,0,0,0) 100%
+        );
     mask-composite: exclude;
-
-    padding: 40px; /* grubość ramki */
 }
 
-/* Animacja po obwodzie (zgodnie z ruchem wskazówek) */
-@keyframes borderFlow {
+/* Ruch zgodnie z ruchem wskazówek zegara */
+@keyframes borderRotate {
     0%   { background-position:   0% 50%; }
     25%  { background-position: 100% 50%; }
     50%  { background-position: 100% 100%; }
@@ -151,7 +152,7 @@ body::before {
     100% { background-position:   0% 50%; }
 }
 
-/* content zawsze nad gradientem */
+/* zawartość zawsze nad gradientem */
 .container {
     position: relative;
     z-index: 1;
