@@ -101,52 +101,20 @@ footer {
     color: #ddd;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    background: url("tlo.png") no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-}
-
-/* Gradient na krawędziach */
+/* Gradient na krawędziach strony */
 body::before {
     content: "";
     position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    /* Gradient początkowy: lewy górny jasny, prawy dolny ciemny */
-    background: linear-gradient(135deg, #cfefff 0%, #0a2e8a 100%);
-    /* Obrót gradientu dla animacji */
-    transform-origin: center center;
-
-    /* Tworzymy efekt prostokąta z wyciętym środkiem */
-    -webkit-mask: 
-        radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
-    -webkit-mask-composite: destination-in;
-    mask: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
-    mask-composite: intersect;
-
-    /* Fade po wewnętrznej stronie */
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.2);
-
-    /* animacja obracania */
-    animation: rotateGradient 20s linear infinite;
-}
-
-/* Animacja obracania gradientu */
-@keyframes rotateGradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Kontener treści zawsze nad gradientem */
-.container {
-    position: relative;
-    z-index: 1;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; /* żeby nie przeszkadzał w klikaniu */
+    background: 
+        linear-gradient(to bottom, rgba(173,216,230,0.5), rgba(0,0,139,0.0)) top,
+        linear-gradient(to top, rgba(173,216,230,0.5), rgba(0,0,139,0.0)) bottom,
+        linear-gradient(to right, rgba(173,216,230,0.5), rgba(0,0,139,0.0)) left,
+        linear-gradient(to left, rgba(173,216,230,0.5), rgba(0,0,139,0.0)) right;
+    background-repeat: no-repeat;
+    background-size: 100% 50px, 100% 50px, 50px 100%, 50px 100%; /* wysokość/szerokość gradientu na krawędziach */
+    background-position: top, bottom, left, right;
 }
     
 @media (max-width: 600px) {
