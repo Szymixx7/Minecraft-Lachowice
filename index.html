@@ -109,21 +109,53 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    /* gradient wokół krawędzi jako jeden */
-    background: conic-gradient(from 0deg, #add8e6, #00008b, #add8e6);
-    mask: 
-        radial-gradient(circle at center, rgba(0,0,0,0) 90%, rgba(0,0,0,1) 100%);
-    -webkit-mask: 
-        radial-gradient(circle at center, rgba(0,0,0,0) 90%, rgba(0,0,0,1) 100%);
-    /* maska tworzy efekt "wyciętego środka", gradient tylko na krawędziach */
+    /* Gradient jako ramka wokół całej strony */
+    background:
+        linear-gradient(to bottom, #add8e6, #00008b) left,
+        linear-gradient(to bottom, #add8e6, #00008b) right,
+        linear-gradient(to right, #add8e6, #00008b) top,
+        linear-gradient(to right, #add8e6, #00008b) bottom;
 
-    /* animacja obracania gradientu wokół strony */
-    animation: rotateGradient 8s linear infinite;
+    background-repeat: no-repeat;
+    background-size:
+        40px 100%, /* lewy bok */
+        40px 100%, /* prawy bok */
+        100% 40px, /* górny bok */
+        100% 40px; /* dolny bok */
+
+    /* wewnętrzne przejście krycia */
+    mask: 
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
+    -webkit-mask: 
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
+        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
+
+    /* animacja ruchu gradientu */
+    background-position: 0 0, 100% 0, 0 0, 0 100%;
+    animation: slideGradient 8s linear infinite;
 }
 
-@keyframes rotateGradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes slideGradient {
+    0% {
+        background-position: 0 0, 100% 0, 0 0, 0 100%;
+    }
+    25% {
+        background-position: 100% 0, 100% 100%, 0 0, 100% 100%;
+    }
+    50% {
+        background-position: 100% 100%, 0 100%, 100% 0, 100% 100%;
+    }
+    75% {
+        background-position: 0 100%, 0 0, 100% 100%, 0 0;
+    }
+    100% {
+        background-position: 0 0, 100% 0, 0 0, 0 100%;
+    }
 }
     
 @media (max-width: 600px) {
