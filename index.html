@@ -109,34 +109,21 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    background:
-        linear-gradient(90deg, #add8e6, #00008b) left,    /* lewy bok: jasny -> ciemny */
-        linear-gradient(270deg, #add8e6, #00008b) right,  /* prawy bok: jasny -> ciemny */
-        linear-gradient(180deg, #add8e6, #00008b) top,    /* górny bok */
-        linear-gradient(0deg, #add8e6, #00008b) bottom;  /* dolny bok */
+    /* gradient wokół krawędzi jako jeden */
+    background: conic-gradient(from 0deg, #add8e6, #00008b, #add8e6);
+    mask: 
+        radial-gradient(circle at center, rgba(0,0,0,0) 90%, rgba(0,0,0,1) 100%);
+    -webkit-mask: 
+        radial-gradient(circle at center, rgba(0,0,0,0) 90%, rgba(0,0,0,1) 100%);
+    /* maska tworzy efekt "wyciętego środka", gradient tylko na krawędziach */
 
-    background-repeat: no-repeat;
-    background-size:
-        60px 100%,    /* szerokość boków pionowych */
-        60px 100%,
-        100% 60px,    /* wysokość boków poziomych */
-        100% 60px;
-
-    /* animacja ruchu gradientu wokół krawędzi */
-    animation: borderMove 6s linear infinite;
+    /* animacja obracania gradientu wokół strony */
+    animation: rotateGradient 8s linear infinite;
 }
 
-@keyframes borderMove {
-    0% { background-position: left top, right top, top left, bottom left; }
-    25% { background-position: left bottom, right bottom, top right, bottom right; }
-    50% { background-position: left top, right top, top left, bottom left; }
-    75% { background-position: left bottom, right bottom, top right, bottom right; }
-    100% { background-position: left top, right top, top left, bottom left; }
-}
-
-.container {
-    position: relative;
-    z-index: 1;
+@keyframes rotateGradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
     
 @media (max-width: 600px) {
