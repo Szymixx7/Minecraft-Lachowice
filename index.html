@@ -109,7 +109,7 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    /* Gradient jako ramka wokół całej strony */
+    /* Gradient po bokach w formie ramki, środek przezroczysty */
     background:
         linear-gradient(to bottom, #add8e6, #00008b) left,
         linear-gradient(to bottom, #add8e6, #00008b) right,
@@ -123,39 +123,50 @@ body::before {
         100% 40px, /* górny bok */
         100% 40px; /* dolny bok */
 
-    /* wewnętrzne przejście krycia */
-    mask: 
+    /* Płynne przejście od gradientu do tła wewnątrz */
+    mask:
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
-    -webkit-mask: 
+    -webkit-mask:
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
         linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
 
-    /* animacja ruchu gradientu */
-    background-position: 0 0, 100% 0, 0 0, 0 100%;
-    animation: slideGradient 8s linear infinite;
+    /* Animacja koloru gradientu */
+    animation: animateGradient 6s linear infinite;
 }
 
-@keyframes slideGradient {
+/* Animacja zmienia tylko kolory gradientu */
+@keyframes animateGradient {
     0% {
-        background-position: 0 0, 100% 0, 0 0, 0 100%;
-    }
-    25% {
-        background-position: 100% 0, 100% 100%, 0 0, 100% 100%;
+        background:
+            linear-gradient(to bottom, #add8e6, #00008b) left,
+            linear-gradient(to bottom, #add8e6, #00008b) right,
+            linear-gradient(to right, #add8e6, #00008b) top,
+            linear-gradient(to right, #add8e6, #00008b) bottom;
     }
     50% {
-        background-position: 100% 100%, 0 100%, 100% 0, 100% 100%;
-    }
-    75% {
-        background-position: 0 100%, 0 0, 100% 100%, 0 0;
+        background:
+            linear-gradient(to bottom, #00008b, #add8e6) left,
+            linear-gradient(to bottom, #00008b, #add8e6) right,
+            linear-gradient(to right, #00008b, #add8e6) top,
+            linear-gradient(to right, #00008b, #add8e6) bottom;
     }
     100% {
-        background-position: 0 0, 100% 0, 0 0, 0 100%;
+        background:
+            linear-gradient(to bottom, #add8e6, #00008b) left,
+            linear-gradient(to bottom, #add8e6, #00008b) right,
+            linear-gradient(to right, #add8e6, #00008b) top,
+            linear-gradient(to right, #add8e6, #00008b) bottom;
     }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
 }
     
 @media (max-width: 600px) {
