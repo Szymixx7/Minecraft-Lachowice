@@ -101,43 +101,49 @@ footer {
     color: #ddd;
 }
 
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: url("tlo.png") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Gradient na krawędziach */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    pointer-events: none;
     z-index: 0;
+    pointer-events: none;
 
-    /* Gradient dookoła krawędzi: jasny → średni → ciemny → średni → jasny */
-    background: conic-gradient(
-        #cfefff 0deg,
-        #4da3ff 90deg,
-        #0a2e8a 180deg,
-        #4da3ff 270deg,
-        #cfefff 360deg
-    );
-    background-size: 400% 400%;
-    animation: borderRotate 15s linear infinite;
+    /* Gradient początkowy: lewy górny jasny, prawy dolny ciemny */
+    background: linear-gradient(135deg, #cfefff 0%, #0a2e8a 100%);
+    /* Obrót gradientu dla animacji */
+    transform-origin: center center;
 
-    /* Ramka/fade od wewnętrznej strony: transparent do 0.8 (mniejsza intensywność w środku) */
-    -webkit-mask:
-        radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
-    -webkit-mask-composite: destination-out;
-    mask:
-        radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    /* Tworzymy efekt prostokąta z wyciętym środkiem */
+    -webkit-mask: 
+        radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+    -webkit-mask-composite: destination-in;
+    mask: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
     mask-composite: intersect;
 
-    /* tylko krawędzie, zero blur */
-    padding: 0;
+    /* Fade po wewnętrznej stronie */
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.2);
+
+    /* animacja obracania */
+    animation: rotateGradient 20s linear infinite;
 }
 
-/* Animacja przesuwania gradientu */
-@keyframes borderRotate {
-    0%   { transform: rotate(0deg); }
+/* Animacja obracania gradientu */
+@keyframes rotateGradient {
+    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* kontener zawsze nad gradientem */
+/* Kontener treści zawsze nad gradientem */
 .container {
     position: relative;
     z-index: 1;
