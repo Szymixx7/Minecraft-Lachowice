@@ -109,52 +109,25 @@ body::before {
     z-index: 0;
     pointer-events: none;
 
-    /* Gradient boczny jako osobne warstwy z maskowaniem wewnętrznym */
     background:
-        linear-gradient(to bottom, #add8e6, #00008b) left,
-        linear-gradient(to bottom, #add8e6, #00008b) right,
-        linear-gradient(to right, #add8e6, #00008b) top,
-        linear-gradient(to right, #add8e6, #00008b) bottom;
+        linear-gradient(90deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) left,
+        linear-gradient(270deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) right,
+        linear-gradient(180deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) top,
+        linear-gradient(0deg, rgba(0,153,255,0.6), rgba(0,153,255,0)) bottom;
 
     background-repeat: no-repeat;
     background-size:
-        50px 100%,  /* lewy bok */
-        50px 100%,  /* prawy bok */
-        100% 50px,  /* górny bok */
-        100% 50px;  /* dolny bok */
+        60px 100%,
+        60px 100%,
+        100% 60px,
+        100% 60px;
 
-    /* Rozmycie tylko po wewnętrznych krawędziach */
-    mask:
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
-    -webkit-mask:
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) top,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) bottom,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) left,
-        linear-gradient(to center, rgba(0,0,0,1), rgba(0,0,0,0)) right;
-
-    /* Animacja przesuwania gradientu wzdłuż krawędzi */
-    animation: moveGradient 5s linear infinite;
+    animation: borderGlow 6s linear infinite;
 }
 
-@keyframes moveGradient {
-    0% {
-        background-position: left top, right top, top left, bottom left;
-    }
-    25% {
-        background-position: left bottom, right bottom, top right, bottom right;
-    }
-    50% {
-        background-position: left top, right top, top left, bottom left;
-    }
-    75% {
-        background-position: left bottom, right bottom, top right, bottom right;
-    }
-    100% {
-        background-position: left top, right top, top left, bottom left;
-    }
+@keyframes borderGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
 .container {
